@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.sidebar {
+  height: 100vh;
+  width: 300px; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color:#37444c; 
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.game {
+  height: 105vh;
+  width: 87vw;
+  position: fixed;
+  overflow: auto;
+  left: 500px;
+  border: 5px solid black;
+}

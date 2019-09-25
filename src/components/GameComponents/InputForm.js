@@ -7,6 +7,9 @@ export default class InputForm extends Component {
     this.state = {
       userGuess: ""
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(evt) {
@@ -21,10 +24,10 @@ export default class InputForm extends Component {
 
   render() {
     return (
-      <form onSubmit={"hello world!"}>
-        <label for="userGuess"></label>
-        <input name="userGuess" value={this.state.userGuess} onChange= {() => this.handleChange()}/>
-
+      <form onSubmit={this.handleSubmit}>
+        <label htmlFor="userGuess"></label>
+        <input name="userGuess" value={this.state.userGuess} onChange={this.handleChange}/>
+        <button>Guess</button>
       </form>
     )
   }
