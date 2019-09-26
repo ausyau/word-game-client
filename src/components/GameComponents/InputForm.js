@@ -14,6 +14,11 @@ export default class InputForm extends Component {
 
   handleSubmit(evt) {
     // Game logic, submits the word
+    evt.preventDefault();
+    this.props.submitGuess(this.state.userGuess)
+    this.setState({
+      userGuess: ""
+    })
   }
 
   handleChange(evt) {
