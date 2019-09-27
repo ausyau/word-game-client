@@ -4,7 +4,7 @@ export default class RemainingGuesses extends Component {
   render() {
     return (
       <div>
-        <h3> {this.props.remainingGuesses} </h3>
+        <h2> Remaining Guesses: {this.props.remainingGuesses} </h2>
       </div>
     )
   }

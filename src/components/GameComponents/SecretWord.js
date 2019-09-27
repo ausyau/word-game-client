@@ -5,7 +5,7 @@ export default class SecretWord extends Component {
   render() {
     return (
       <div>
-        <h1> {this.props.current()}</h1>
+        <h1 style={{letterSpacing: "0.2em"}}> {this.props.current()}</h1>
       </div>
     )
   }

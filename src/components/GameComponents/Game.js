@@ -12,7 +12,7 @@ export default class Game extends Component {
       current: "",
       secretWord: "belly",
       remainingGuesses: 6,
-      guessedLetters: new Set(["e", "l"]),
+      guessedLetters: new Set(),
       gameStatus: null
     };
 
@@ -34,6 +34,7 @@ export default class Game extends Component {
   }
 
   handleLetterGuess(guess) {
+    guess = guess.toLowerCase();
     let value = this.state.secretWord.includes(guess) || this.state.guessedLetters.has(guess) ? 0 : 1
       this.setState(st => ({
         guessedLetters: st.guessedLetters.add(guess),
@@ -92,8 +93,7 @@ export default class Game extends Component {
     return (
       <div className="Game">
         <SecretWord current={this.guessedWord} />
-        <GuessedLetters guessedLetters={this.state.guessedLetters} />
-        <RemainingGuesses remainingGuesses={this.state.remainingGuesses} />
+        <GuessedLetters guessedLetters={this.state.guessedLetters} secretWord={this.state.secretWord} remainingGuesses={this.state.remainingGuesses}/>
         <InputForm submitGuess={this.submitGuess} remainingGuesses={this.state.remainingGuesses} gameStatus={this.state.gameStatus} />
       </div>
     )
