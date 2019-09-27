@@ -31,8 +31,8 @@ export default class InputForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="userGuess"></label>
-        <input name="userGuess" value={this.state.userGuess} onChange={this.handleChange}/>
-        <button>Guess</button>
+        <input name="userGuess" value={this.state.userGuess} onChange={this.handleChange} disabled={!this.props.remainingGuesses || this.props.gameStatus}/>
+        <button disabled={!this.props.remainingGuesses || this.props.gameStatus}>Guess</button>
       </form>
     )
   }
