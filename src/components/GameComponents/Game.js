@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import GameApi from '../../helpers/GameApi'
-import InputForm from './InputForm'
-import SecretWord from './SecretWord'
-import GuessedLetters from './GuessedLetters'
+import React, { Component } from 'react';
+import GameApi from '../../helpers/GameApi';
+import InputForm from './InputForm';
+import SecretWord from './SecretWord';
+import GuessedLetters from './GuessedLetters';
 
 
 export default class Game extends Component {
@@ -28,12 +28,12 @@ export default class Game extends Component {
    * @param {*}  
    */
   async startGame() {
-    const { difficulty, maxLength } = this.props
-    let settings = { difficulty, maxLength }
+    const { difficulty, maxLength } = this.props;
+    let settings = { difficulty, maxLength };
     let response = await GameApi.getWords(settings);
-    let words = response.words
+    let words = response.words;
 
-    this.setNewWord(words)
+    this.setNewWord(words);
   }
 
   /**
@@ -46,9 +46,9 @@ export default class Game extends Component {
   setNewWord(words) {
     let newSecretWord = words[Math.floor(Math.random() * words.length)];
     if (newSecretWord === this.state.secretWord) {
-      this.setNewWord(words)
+      this.setNewWord(words);
     } else {
-      this.setState({ secretWord: newSecretWord }, () => console.log(this.state))
+      this.setState({ secretWord: newSecretWord }, () => console.log(this.state));
     }
   }
 
@@ -68,7 +68,7 @@ export default class Game extends Component {
    * @param {*} guess - String either a single letter or word
    */
   submitGuess(guess) {
-    guess.length > 1 ? this.handleWordGuess(guess) : this.handleLetterGuess(guess)
+    guess.length > 1 ? this.handleWordGuess(guess) : this.handleLetterGuess(guess);
   }
 
   /**
@@ -78,11 +78,11 @@ export default class Game extends Component {
    */
   handleLetterGuess(guess) {
     guess = guess.toLowerCase();
-    let value = this.state.secretWord.includes(guess) || this.state.guessedLetters.has(guess) ? 0 : 1
+    let value = this.state.secretWord.includes(guess) || this.state.guessedLetters.has(guess) ? 0 : 1;
     this.setState(st => ({
       guessedLetters: st.guessedLetters.add(guess),
       remainingGuesses: st.remainingGuesses - value
-    }), () => { this.setGameStatus() })
+    }), () => { this.setGameStatus(); });
   }
 
   /**
@@ -95,11 +95,11 @@ export default class Game extends Component {
       this.setState(st => ({
         ...st,
         guessedLetters: new Set([...st.guessedLetters, ...guess])
-      }), () => { this.setGameStatus() })
+      }), () => { this.setGameStatus(); });
     } else {
       this.setState(st => ({
         remainingGuesses: st.remainingGuesses - 1
-      }), () => { this.setGameStatus() })
+      }), () => { this.setGameStatus(); });
     }
   }
 
@@ -110,35 +110,34 @@ export default class Game extends Component {
   setGameStatus() {
     let winner = Array.from(this.state.secretWord)
       .every((letter) => (this.state.guessedLetters.has(letter)
-      ))
+      ));
     if (winner) {
       this.setState({
         gameStatus: true
-      })
+      });
     }
     if (this.state.remainingGuesses === 0) {
       this.setState({
         gameStatus: false
-      })
+      });
     }
   }
 
-
   updateGameStatus() {
-    if(this.state.gameStatus) {
+    if (this.state.gameStatus) {
       return (
         <>
           <div>YOU WIN!</div>
           <button onClick={this.props.toggleMenu}>Continue?</button>
-      </>
-      )
-    } else if(this.state.gameStatus === false) {
+        </>
+      );
+    } else if (this.state.gameStatus === false) {
       return (
         <>
           <div>YOU Lose!</div>
           <button onClick={this.props.toggleMenu}>Continue?</button>
-      </>
-      )
+        </>
+      );
     }
   }
 
@@ -153,12 +152,14 @@ export default class Game extends Component {
   render() {
 
     return (
-      <div className="Game">
-        <SecretWord current={this.guessedWord} />
-        <GuessedLetters guessedLetters={this.state.guessedLetters} secretWord={this.state.secretWord} remainingGuesses={this.state.remainingGuesses} />
-        <InputForm submitGuess={this.submitGuess} remainingGuesses={this.state.remainingGuesses} gameStatus={this.state.gameStatus} />
-        {this.updateGameStatus()}
+      <div className="Game" style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{display: "flex", flexDirection: "column"}}>
+          <SecretWord current={this.guessedWord} />
+          <InputForm submitGuess={this.submitGuess} remainingGuesses={this.state.remainingGuesses} gameStatus={this.state.gameStatus} />
+          <GuessedLetters guessedLetters={this.state.guessedLetters} secretWord={this.state.secretWord} remainingGuesses={this.state.remainingGuesses} />
+          {this.updateGameStatus()}
+        </div>
       </div>
-    )
+    );
   }
 }

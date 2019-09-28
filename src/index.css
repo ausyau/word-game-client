@@ -33,3 +33,9 @@ code {
   overflow: auto;
   left: 300px;
 }
+
+.FormSelection { 
+  display: "flex"; 
+  justify-content: "space-between";
+}
+

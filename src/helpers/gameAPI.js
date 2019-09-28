@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 export default class GameApi {
 
@@ -13,7 +13,7 @@ export default class GameApi {
     }
 
     catch (err) {
-      console.log("Something went wrong with API", err.response)
+      console.log("Something went wrong with API", err.response);
     }
   }
 
