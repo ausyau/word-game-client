@@ -18,7 +18,7 @@ export default class GameMenu extends Component {
   }
 
   handleChange(evt) {
-    this.setState({ [evt.target.name]: evt.target.value }, () => console.log(this.state))
+    this.setState({ [evt.target.name]: evt.target.value }, () => console.log(this.state));
   }
   handleSubmit(evt) {
     evt.preventDefault();
