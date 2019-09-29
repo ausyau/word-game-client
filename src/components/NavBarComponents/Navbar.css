@@ -2,7 +2,7 @@
 .NavContainer {
   margin-top: 20px;
   display: flex; 
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .NavBar {
@@ -16,7 +16,10 @@
 }
 
 .GameTitle {
+  display: flex;
+  justify-content: center;
   font-family: "myriad-pro";
   font-size: 65px;
-  padding-top: 75px;
+  padding: 75px;
+  align-self: center;
 }

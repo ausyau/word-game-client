@@ -7,12 +7,14 @@ export default class NavBar extends Component {
 
   render() {
     return (
-      <div className="NavContainer">
-        <img className="LI-Logo" src={logo} />
-        <div className="NavBar">
-          <div className="GameTitle">Word Game</div>
+      <>
+        <div className="NavContainer">
+          <img className="LI-Logo" src={logo} />
+          <div className="NavBar">
+          </div>
         </div>
-      </div>
+        <div className="GameTitle">Word Game</div>
+      </>
     );
   }
 }

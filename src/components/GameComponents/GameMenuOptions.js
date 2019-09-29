@@ -13,9 +13,16 @@ export default class GameMenuOptions extends Component {
             </label>
             <div className="GameOption">
               <select name="difficulty" difficulty={this.props.difficulty} onChange={this.props.handleChange}>
-                {numbers.slice(0, 10).map(num => (
-                  <option key={Math.random() * num} difficulty={num}>{num}</option> 
-                ))}
+                <option difficulty="1">1</option>
+                <option difficulty="2">2</option>
+                <option difficulty="3">3</option>
+                <option difficulty="4">4</option>
+                <option difficulty="5">5</option>
+                <option difficulty="6">6</option>
+                <option difficulty="7">7</option>
+                <option difficulty="8">8</option>
+                <option difficulty="9">9</option>
+                <option difficulty="10">10</option>
               </select>
             </div>
           </div>
