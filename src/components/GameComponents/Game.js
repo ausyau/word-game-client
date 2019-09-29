@@ -53,7 +53,7 @@ export default class Game extends Component {
     if (newSecretWord === this.state.secretWord) {
       this.setNewWord(words);
     } else {
-      this.setState({ secretWord: newSecretWord }, () => console.log(this.state));
+      this.setState({ secretWord: newSecretWord });
     }
   }
 
@@ -148,7 +148,7 @@ export default class Game extends Component {
   render() {
     return (
       <div className="Game">
-        <div style={{display: "flex", flexDirection: "column"}}>
+        <div style={{display: "flex", flexDirection: "column", width: "1000px"}}>
           <SecretWord current={this.guessedWord} />
           <div className="UserInterface">
             <RemainingGuesses remainingGuesses={this.state.remainingGuesses}/>

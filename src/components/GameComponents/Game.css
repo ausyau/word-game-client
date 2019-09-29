@@ -15,8 +15,7 @@
 
 .UserInterface {
   display: flex;
-  justify-content: space-between;
-  width: 800px;
+  justify-content: space-around;
 }
 
 .RemainingGuessesContainer {
@@ -68,7 +67,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 100px 0px;
+  margin: 50px 0px;
 }
 .GameMessage {
   font-size: 3em;

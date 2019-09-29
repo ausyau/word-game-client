@@ -1,6 +1,6 @@
 ## LinkedIn Word Game
 
-This is client side built in React for a word guessing game, which can be played by a user "against" the
+This is the client side application built in React for a word guessing game, which can be played by a user "against" the
 computer. This is a game where the secret-keeper (in this case, the computer) thinks of a
 word, and the guesser (the user) tries to guess it one letter at a time. The guesser has six
 guesses. If the guesser guesses a letter which is part of the word, the secret-keeper will reveal
