@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 export default class InputForm extends Component {
 
   constructor(props) {
@@ -29,10 +30,10 @@ export default class InputForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="InputFormContainer">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="userGuess"></label>
-          <input name="userGuess" value={this.state.userGuess} onChange={this.handleChange} disabled={!this.props.remainingGuesses || this.props.gameStatus}/>
+          <input name="userGuess" value={this.state.userGuess} placeholder="Enter a letter or word" onChange={this.handleChange} disabled={!this.props.remainingGuesses || this.props.gameStatus}/>
           <button disabled={!this.props.remainingGuesses || this.props.gameStatus}>Guess</button>
         </form>
       </div>

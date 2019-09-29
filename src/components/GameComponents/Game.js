@@ -3,6 +3,7 @@ import GameApi from '../../helpers/GameApi';
 import InputForm from './InputForm';
 import SecretWord from './SecretWord';
 import GuessedLetters from './GuessedLetters';
+import RemainingGuesses from './RemainingGuesses';
 import './GameMenu.css';
 import './Game.css';
 
@@ -154,11 +155,16 @@ export default class Game extends Component {
   render() {
 
     return (
-      <div className="Game" style={{ display: "flex", justifyContent: "center" }}>
+      <div className="Game">
         <div style={{display: "flex", flexDirection: "column"}}>
           <SecretWord current={this.guessedWord} />
-          <InputForm submitGuess={this.submitGuess} remainingGuesses={this.state.remainingGuesses} gameStatus={this.state.gameStatus} />
-          <GuessedLetters guessedLetters={this.state.guessedLetters} secretWord={this.state.secretWord} remainingGuesses={this.state.remainingGuesses} />
+          <div className="UserInterface">
+            <RemainingGuesses remainingGuesses={this.state.remainingGuesses}/>
+            <div className="UserInput">
+              <GuessedLetters guessedLetters={this.state.guessedLetters} secretWord={this.state.secretWord} />
+              <InputForm submitGuess={this.submitGuess} remainingGuesses={this.state.remainingGuesses} gameStatus={this.state.gameStatus} />
+            </div>
+          </div>
           {this.updateGameStatus()}
         </div>
       </div>
