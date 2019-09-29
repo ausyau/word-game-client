@@ -41,4 +41,5 @@
   background-image: -o-linear-gradient(top, #11db6f, #0ecc34);
   background-image: linear-gradient(to bottom, #11db6f, #0ecc34);
   text-decoration: none;
+  cursor: pointer;
 }

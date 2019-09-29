@@ -14,7 +14,6 @@ export default class InputForm extends Component {
   }
 
   handleSubmit(evt) {
-    // Game logic, submits the word
     evt.preventDefault();
     this.props.submitGuess(this.state.userGuess);
     this.setState({
@@ -33,8 +32,10 @@ export default class InputForm extends Component {
       <div className="InputFormContainer">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="userGuess"></label>
-          <input name="userGuess" value={this.state.userGuess} placeholder="Enter a letter or word" onChange={this.handleChange} disabled={!this.props.remainingGuesses || this.props.gameStatus}/>
-          <button disabled={!this.props.remainingGuesses || this.props.gameStatus}>Guess</button>
+          <div className="InputAddOn">
+            <input className="InputAddOn-field" name="userGuess" value={this.state.userGuess} placeholder="Enter a letter or word" onChange={this.handleChange} disabled={!this.props.remainingGuesses || this.props.gameStatus} />
+            <button className="InputAddOn-item" disabled={!this.props.remainingGuesses || this.props.gameStatus}>Guess</button>
+          </div>
         </form>
       </div>
     );

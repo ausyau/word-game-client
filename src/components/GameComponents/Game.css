@@ -10,8 +10,7 @@
 .SecretWord {
   font-size: 10em;
   letter-spacing: 0.2em;
-  display: flex;
-  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .UserInterface {
@@ -50,6 +49,7 @@
 .GuessedLetters {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .GuessedLetters h2 {
