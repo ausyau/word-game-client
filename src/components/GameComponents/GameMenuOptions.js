@@ -35,7 +35,7 @@ export default class GameMenuOptions extends Component {
               <select name="maxLength" maxLength={this.props.maxLength} onChange={this.props.handleChange}>
                 <option maxLength="None">None</option>
                 {numbers.slice(4, 15).map(num => (
-                  <option key={Math.random() * num} difficulty={num}>{num}</option> 
+                  <option key={Math.random() * num} maxLength={num}>{num}</option> 
                 ))}
               </select>
             </div>

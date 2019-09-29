@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Game from './Game';
-import GameMenuOptions from './GameMenuOptions';
 
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+const menuOptions = {
+  difficulty: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  maxWordLength: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+};
+
 export default class GameMenu extends Component {
   constructor(props) {
     super(props);
@@ -37,24 +40,15 @@ export default class GameMenu extends Component {
 
   render() {
 
-    let gameMenu2 = <div className="GameMenuOptions">
+    let gameMenu = <div className="GameMenuOptions">
       <form onSubmit={this.handleSubmit} style={{ fontSize: "1.3em" }}>
         <div className="GameOptionContainer">
           <label htmlFor="difficulty">
             Select difficulty
-        </label>
+          </label>
           <div className="GameOption">
             <select name="difficulty" difficulty={this.state.difficulty} onChange={this.handleChange}>
-              <option difficulty="1">1</option>
-              <option difficulty="2">2</option>
-              <option difficulty="3">3</option>
-              <option difficulty="4">4</option>
-              <option difficulty="5">5</option>
-              <option difficulty="1">1</option>
-              <option difficulty="1">1</option>
- 
-              
-              
+              {menuOptions.difficulty.map(n => <option value={n}>{n}</option>)}
             </select>
           </div>
         </div>
@@ -62,25 +56,22 @@ export default class GameMenu extends Component {
         <div className="GameOptionContainer">
           <label htmlFor="maxLength">
             Select max word length
-        </label>
+          </label>
           <div className="GameOption" >
             <select name="maxLength" maxLength={this.state.maxLength} onChange={this.handleChange}>
               <option maxLength="None">None</option>
-              {numbers.slice(4, 15).map(num => (
-                <option key={Math.random() * num} difficulty={num}>{num}</option>
-              ))}
+              {menuOptions.maxWordLength.map(n => <option value={n}>{n}</option>)}
             </select>
           </div>
         </div>
 
         <button className="StartButton">Start Game</button>
       </form>
-    </div>
+    </div>;
 
     return (
       <div className="GameMenu">
-        {this.state.selection ? <GameMenuOptions handleChange={this.handleChange} maxLength={this.state.maxLength} difficulty={this.state.difficulty} handleSubmit={this.handleSubmit} /> : <Game difficulty={this.state.difficulty} maxLength={this.state.maxLength} toggleMenu={this.toggleMenu} />}
-        {/* {this.state.selection ? gameMenu2 : <Game difficulty={this.state.difficulty} maxLength={this.state.maxLength} toggleMenu={this.toggleMenu} />} */}
+        {this.state.selection ? gameMenu : <Game difficulty={this.state.difficulty} maxLength={this.state.maxLength} toggleMenu={this.toggleMenu} />}
       </div>
     );
   }
