@@ -4,6 +4,7 @@ import InputForm from './InputForm';
 import SecretWord from './SecretWord';
 import GuessedLetters from './GuessedLetters';
 import RemainingGuesses from './RemainingGuesses';
+import GameEnd from './GameEnd';
 import './GameMenu.css';
 import './Game.css';
 
@@ -16,6 +17,7 @@ export default class Game extends Component {
       secretWord: "",
       remainingGuesses: 6,
       guessedLetters: new Set(),
+      gameStatus: null
     };
 
     this.guessedWord = this.guessedWord.bind(this);
@@ -127,29 +129,18 @@ export default class Game extends Component {
   }
 
   updateGameStatus() {
+    const winMessage = `You won!`;
+    const loseMessage = `You lost! The secret word was '${this.state.secretWord}'`;
+
     if (this.state.gameStatus) {
       return (
-        <>
-          <div>YOU WIN!</div>
-          <button onClick={this.props.toggleMenu}>Continue?</button>
-        </>
+        <GameEnd message={winMessage} toggleMenu={this.props.toggleMenu} />
       );
     } else if (this.state.gameStatus === false) {
       return (
-        <>
-          <div>YOU Lose!</div>
-          <button onClick={this.props.toggleMenu}>Continue?</button>
-        </>
+        <GameEnd message={loseMessage} toggleMenu={this.props.toggleMenu} />
       );
     }
-  }
-
-  winGame() {
-
-  }
-
-  loseGame() {
-
   }
 
   render() {

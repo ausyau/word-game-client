@@ -41,7 +41,7 @@ export default class GameMenu extends Component {
   render() {
 
     let gameMenu = <div className="GameMenuOptions">
-      <form onSubmit={this.handleSubmit} style={{ fontSize: "1.3em" }}>
+      <form className="GameForm" onSubmit={this.handleSubmit}>
         <div className="GameOptionContainer">
           <label htmlFor="difficulty">
             Select difficulty
@@ -65,7 +65,7 @@ export default class GameMenu extends Component {
           </div>
         </div>
 
-        <button className="StartButton">Start Game</button>
+        <button className="StartButton">Start</button>
       </form>
     </div>;
 
