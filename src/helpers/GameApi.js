@@ -2,6 +2,9 @@ import axios from "axios";
 
 export default class GameApi {
 
+  /**
+   * Makes an API request to the Node proxy server to retrieve words
+   */
   static async request(params = {}, verb = "get") {
     try {
       return (await axios({

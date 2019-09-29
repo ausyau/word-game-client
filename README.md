@@ -1,3 +1,22 @@
+## LinkedIn Word Game
+
+This is client side built in React for a word guessing game, which can be played by a user "against" the
+computer. This is a game where the secret-keeper (in this case, the computer) thinks of a
+word, and the guesser (the user) tries to guess it one letter at a time. The guesser has six
+guesses. If the guesser guesses a letter which is part of the word, the secret-keeper will reveal
+all occurrences of that letter in the word. If the guesser guesses a correct letter such that all
+letters are now revealed, the game is over and player 2 has won. Instead if player 2 runs out of
+guesses before the whole word is discovered, the game is over and player 1 has won. Check
+out https://en.wikipedia.org/wiki/Hangman_(game) for more details.
+
+### Backend
+Here is the [backend](https://github.com/ausyau/word-game-server) for the backend server
+
+### Game Rules
+- At the start of the game the computer/secret-keeper will choose a dictionary word
+- The guesser loses the game if they guess 6 letters that are not in the secret word
+- The guesser wins the game if they guess all letters in the secret word correctly and have not already lost the game per the conditions above
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

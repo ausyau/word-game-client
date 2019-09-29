@@ -57,7 +57,6 @@ export default class Game extends Component {
     }
   }
 
-
   /**
    * Function that passes on the current secret word status. If the correct letter has been guessed,
    * the letter will be revealed, otherwise it is an underscore
@@ -128,6 +127,9 @@ export default class Game extends Component {
     }
   }
 
+  /**
+   * Function displays a victory or loss message and allows user to play again
+   */
   updateGameStatus() {
     const winMessage = `You won!`;
     const loseMessage = `You lost! The secret word was '${this.state.secretWord}'`;
@@ -144,7 +146,6 @@ export default class Game extends Component {
   }
 
   render() {
-
     return (
       <div className="Game">
         <div style={{display: "flex", flexDirection: "column"}}>

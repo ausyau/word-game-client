@@ -27,16 +27,41 @@ Select {
 }
 
 .InputAddOn-field {
+  font-family: "myriad-pro";
   flex: 1;
   padding: .5rem;
-  border: 1px solid #d4d4d4;
+  border: 2px solid #494949;
   border-right: 0;
   width: 275px;
-  font-weight: 500px;
+  height: 59px;
+  font-size: 1.7em;
+  border-radius: 10px;
+  
+
   /* field styles */
 }
 
 .InputAddOn-item {
   /* item styles */
+  font-family: "myriad-pro";
+  font-size: 1.7em;
+  color: #494949 !important;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 0px 10px 10px 0px;
+  border: 2px solid #494949;
+  border-left: 1.5px solid #9b9b9b;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  margin-left: -8px;
+}
+
+.InputAddOn-item:hover {
+  /* item styles */
+  color: #ffffff !important;
+  background: #2011ac;
+  border-color: #3e1cd8 !important;
+  transition: all 0.4s ease 0s;
 }
 
