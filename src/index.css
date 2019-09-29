@@ -14,6 +14,9 @@ code {
     monospace;
 }
 
+Select {
+  width: 70px;
+}
 .FormSelection { 
   display: "flex"; 
   justify-content: "space-between";
@@ -36,3 +39,4 @@ code {
 .InputAddOn-item {
   /* item styles */
 }
+

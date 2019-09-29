@@ -20,7 +20,7 @@ export default class GuessedLetters extends Component {
   render() {
     return (
       <div className="GuessedLettersContainer">
-        <div className="InterfaceHeader">Guessed Letters</div>
+        <div className="InterfaceHeader">Guessed Letters:</div>
         <div className="GuessedLetters">
           {letters.map(l => (
             <h2 key={l} style={this.hasWord(l)}>{l}</h2>
