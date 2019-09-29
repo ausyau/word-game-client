@@ -11,7 +11,6 @@ export default class GameApi {
         params,
       })).data;
     }
-
     catch (err) {
       console.log("Something went wrong with API", err.response);
     }
