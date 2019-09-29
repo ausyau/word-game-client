@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import RemainingGuesses from './RemainingGuesses';
 
 const letters = [
   "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",

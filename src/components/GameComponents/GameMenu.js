@@ -22,14 +22,13 @@ export default class GameMenu extends Component {
   }
 
   handleChange(evt) {
-    console.log("Change is happening", evt.target.name, evt.target.value);
     this.setState({ [evt.target.name]: evt.target.value });
   }
   handleSubmit(evt) {
     evt.preventDefault();
     this.setState({
       selection: false
-    }, () => console.log("New state", this.state));
+    });
   }
 
   toggleMenu() {
@@ -39,7 +38,6 @@ export default class GameMenu extends Component {
   }
 
   render() {
-
     let gameMenu = <div className="GameMenuOptions">
       <form className="GameForm" onSubmit={this.handleSubmit}>
         <div className="GameOptionContainer">
@@ -48,7 +46,7 @@ export default class GameMenu extends Component {
           </label>
           <div className="GameOption">
             <select name="difficulty" difficulty={this.state.difficulty} onChange={this.handleChange}>
-              {menuOptions.difficulty.map(n => <option value={n}>{n}</option>)}
+              {menuOptions.difficulty.map(n => <option key={`difficulty${n}`} value={n}>{n}</option>)}
             </select>
           </div>
         </div>
@@ -60,7 +58,7 @@ export default class GameMenu extends Component {
           <div className="GameOption" >
             <select name="maxLength" maxLength={this.state.maxLength} onChange={this.handleChange}>
               <option maxLength="None">None</option>
-              {menuOptions.maxWordLength.map(n => <option value={n}>{n}</option>)}
+              {menuOptions.maxWordLength.map(n => <option key={`maxLength${n}`} value={n}>{n}</option>)}
             </select>
           </div>
         </div>

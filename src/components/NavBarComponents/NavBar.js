@@ -9,7 +9,7 @@ export default class NavBar extends Component {
     return (
       <>
         <div className="NavContainer">
-          <img className="LI-Logo" src={logo} />
+          <img className="LI-Logo" src={logo} alt="LinkedIn logo" />
           <div className="NavBar">
           </div>
         </div>
