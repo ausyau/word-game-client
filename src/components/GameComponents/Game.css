@@ -1,0 +1,11 @@
+
+.SecretWordContainer {
+  display: flex;
+  justify-content: center;
+}
+.SecretWord {
+  font-size: 10em;
+  letter-spacing: 0.2em;
+  display: flex;
+  justify-content: center;
+}

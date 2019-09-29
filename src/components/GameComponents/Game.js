@@ -3,6 +3,8 @@ import GameApi from '../../helpers/GameApi';
 import InputForm from './InputForm';
 import SecretWord from './SecretWord';
 import GuessedLetters from './GuessedLetters';
+import './GameMenu.css';
+import './Game.css';
 
 
 export default class Game extends Component {

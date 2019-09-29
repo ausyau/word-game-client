@@ -1,6 +1,22 @@
 
 .NavContainer {
-  margin-top: "20px";
-  display: "flex"; 
-  justify-content: "center";
+  margin-top: 20px;
+  display: flex; 
+  justify-content: center;
+}
+
+.NavBar {
+  padding: 10px; 
+  display: flex; 
+  justify-content: center;
+}
+
+.LI-Logo {
+  max-height: 40px;
+}
+
+.GameTitle {
+  font-family: "myriad-pro";
+  font-size: 65px;
+  padding-top: 75px;
 }
