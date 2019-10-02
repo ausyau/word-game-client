@@ -7,15 +7,20 @@ export default class GameApi {
    */
   static async request(params = {}, verb = "get") {
     try {
-      return (await axios({
+      let response = await axios({
         baseURL: "http://localhost:3005",
         method: verb,
         url: "/words",
         params,
-      })).data;
+      })
+      let { data, status } = response;
+      return { data, status };
     }
     catch (err) {
-      console.log("Something went wrong with API", err.response);
+      return {
+        status: 500,
+        message: "Something went wrong with API"
+      };
     }
   }
 

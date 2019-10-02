@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import GameApi from '../../helpers/GameApi';
 import InputForm from './InputForm';
 import SecretWord from './SecretWord';
 import GuessedLetters from './GuessedLetters';
@@ -24,7 +23,7 @@ export default class Game extends Component {
     this.submitGuess = this.submitGuess.bind(this);
   }
   componentDidMount() {
-    this.startGame();
+    this.setNewWord(this.props.words);
   }
 
   /**
@@ -32,14 +31,19 @@ export default class Game extends Component {
    * 
    * @param {*}  
    */
-  async startGame() {
-    const { difficulty, maxLength } = this.props;
-    let settings = { difficulty, maxLength };
-    let response = await GameApi.getWords(settings);
-    let words = response.words;
+  // async startGame() {
+  //   const { difficulty, maxLength } = this.props;
+  //   let settings = { difficulty, maxLength };
+  //   let response = await GameApi.getWords(settings);
+  //   console.log("Response", response);
 
-    this.setNewWord(words);
-  }
+  //   if(response.status < 400) {
+  //     let words = response.data.words;
+  //     this.setNewWord(words);
+  //   } else {
+  //     console.log("Error!");
+  //   }
+  // }
 
   /**
    * Helper function takes a random new word from the array of words provided to be the secret word
@@ -53,7 +57,7 @@ export default class Game extends Component {
     if (newSecretWord === this.state.secretWord) {
       this.setNewWord(words);
     } else {
-      this.setState({ secretWord: newSecretWord });
+      this.setState({ secretWord: newSecretWord }, ()=> {console.log(this.state);});
     }
   }
 
@@ -81,6 +85,7 @@ export default class Game extends Component {
    * @param {*} guess - String single letter
    */
   handleLetterGuess(guess) {
+    // Avoid mutation!
     guess = guess.toLowerCase();
     let value = this.state.secretWord.includes(guess) || this.state.guessedLetters.has(guess) ? 0 : 1;
     this.setState(st => ({
@@ -88,13 +93,14 @@ export default class Game extends Component {
       remainingGuesses: st.remainingGuesses - value
     }), () => { this.setGameStatus(); });
   }
-
+  
   /**
-    * Function that handles a guess of a word
-    * 
-    * @param {*} guess - String word
-    */
+   * Function that handles a guess of a word
+   * 
+   * @param {*} guess - String word
+   */
   handleWordGuess(guess) {
+    guess = guess.toLowerCase();
     if (guess === this.state.secretWord) {
       this.setState(st => ({
         ...st,
@@ -138,6 +144,7 @@ export default class Game extends Component {
       return (
         <GameEnd message={winMessage} toggleMenu={this.props.toggleMenu} />
       );
+      // Look into enums
     } else if (this.state.gameStatus === false) {
       return (
         <GameEnd message={loseMessage} toggleMenu={this.props.toggleMenu} />

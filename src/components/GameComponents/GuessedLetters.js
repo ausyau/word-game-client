@@ -6,7 +6,7 @@ const letters = [
 ];
 export default class GuessedLetters extends Component {
 
-  hasWord(letter) {
+  getLetterStyle(letter) {
     letter = letter.toLowerCase();
     if (this.props.secretWord.includes(letter) && this.props.guessedLetters.has(letter)) {
       return { color: 'green', textDecoration: "line-through" };
@@ -22,7 +22,7 @@ export default class GuessedLetters extends Component {
         <div className="InterfaceHeader">Guessed Letters:</div>
         <div className="GuessedLetters">
           {letters.map(l => (
-            <h2 key={l} style={this.hasWord(l)}>{l}</h2>
+            <h2 key={l} style={this.getLetterStyle(l)}>{l}</h2>
           ))}
         </div>
       </div>

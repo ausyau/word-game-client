@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Game from './Game';
+import GameApi from '../../helpers/GameApi';
+
 
 const menuOptions = {
   difficulty: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -21,20 +23,46 @@ export default class GameMenu extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
+  async startGame() {
+    const { difficulty, maxLength } = this.state;
+    let settings = { difficulty, maxLength };
+    let response = await GameApi.getWords(settings);
+    console.log("Response", response);
+
+    if (response.status < 400) {
+      let words = response.data.words;
+      this.setState({ words, selection: false, error: false });
+    } else {
+      this.setState({
+        error: true,
+        errorMessage: response.message,
+      });
+      console.log("Error!");
+    }
+  }
+
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value });
   }
   handleSubmit(evt) {
     evt.preventDefault();
-    this.setState({
-      selection: false
-    });
+
+    this.startGame();
+
   }
 
   toggleMenu() {
     this.setState({
       selection: true
     });
+  }
+
+  errorMessage() {
+    if(this.state.error) {
+      return (
+        <h1>{this.state.errorMessage}</h1>
+      );
+    }
   }
 
   render() {
@@ -67,9 +95,11 @@ export default class GameMenu extends Component {
       </form>
     </div>;
 
+
     return (
       <div className="GameMenu">
-        {this.state.selection ? gameMenu : <Game difficulty={this.state.difficulty} maxLength={this.state.maxLength} toggleMenu={this.toggleMenu} />}
+        {this.state.selection ? gameMenu : <Game difficulty={this.state.difficulty} maxLength={this.state.maxLength} toggleMenu={this.toggleMenu} words={this.state.words} />}
+        {this.errorMessage()}
       </div>
     );
   }
